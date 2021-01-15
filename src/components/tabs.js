@@ -13,6 +13,15 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+  let topicsEl = document.createElement("div")
+  topicsEl.classList.add("topics")
+  topics.forEach((topic) => {
+    let topicEl = document.createElement("div")
+    topicEl.classList.add("tab")
+    topicEl.textContent = topic
+    topicsEl.appendChild(topicEl)
+  })
+  return topicsEl
 }
 
 const tabsAppender = (selector) => {
@@ -23,6 +32,14 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+
+  fetch(`https://lambda-times-api.herokuapp.com/topics`).then( r => r.json()).then( r => {
+    let topics = r.topics
+    let tabs = Tabs(topics)
+    selector = document.querySelector(selector) 
+    selector.appendChild(tabs)
+  }).catch( e => console.log(e))
+
 }
 
 export { Tabs, tabsAppender }
