@@ -1,4 +1,5 @@
 const Tabs = (topics) => {
+
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -19,6 +20,11 @@ const Tabs = (topics) => {
     let topicEl = document.createElement("div")
     topicEl.classList.add("tab")
     topicEl.textContent = topic
+    topicEl.addEventListener("click", () => {
+      window.localStorage.setItem("topic", topic)
+      location.reload()
+    })
+
     topicsEl.appendChild(topicEl)
   })
   return topicsEl

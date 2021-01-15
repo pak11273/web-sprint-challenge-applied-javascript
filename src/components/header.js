@@ -1,3 +1,6 @@
+// rest local storage
+localStorage.removeItem("topic")
+
 const Header = (title, date, temp) => {
   // TASK 1
   // ---------------------

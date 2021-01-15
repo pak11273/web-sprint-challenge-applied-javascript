@@ -1,4 +1,10 @@
+// get localStorage
+let topicLS = localStorage.getItem("topic")
+
 const Card = (article) => {
+  // grab topic from localStorage
+
+
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -54,6 +60,11 @@ const cardAppender = (selector) => {
 
   fetch(`https://lambda-times-api.herokuapp.com/articles`).then( r => r.json()).then( r => {
     let topics = r.articles
+    console.log(topics)
+    if(topicLS) {
+      topics = [topics[topicLS]]
+    }
+
     selector = document.querySelector(selector)
 
     for( let prop in topics) {
