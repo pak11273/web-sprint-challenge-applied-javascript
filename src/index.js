@@ -1,12 +1,13 @@
 // DO NOT MAKE CHANGES TO THIS FILE
 // DO NOT MAKE CHANGES TO THIS FILE
 // DO NOT MAKE CHANGES TO THIS FILE
+
 import 'regenerator-runtime'
-import { worker } from './mocks/browser'
 
 import { cardAppender } from './components/card'
-import { tabsAppender } from './components/tabs'
 import { headerAppender } from './components/header'
+import { tabsAppender } from './components/tabs'
+import { worker } from './mocks/browser'
 
 worker.start()
 

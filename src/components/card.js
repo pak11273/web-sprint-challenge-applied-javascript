@@ -17,6 +17,29 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  let cardEl = document.createElement("div")
+  let headlineEl = document.createElement("div")
+  let authorContainerEl = document.createElement("div")
+  let imgContainerEl = document.createElement("div")
+  let imgEl = document.createElement("img")
+  let nameEl = document.createElement("span")
+
+  cardEl.appendChild(headlineEl)
+  cardEl.appendChild(authorContainerEl)
+  authorContainerEl.appendChild(imgContainerEl)
+  authorContainerEl.appendChild(nameEl)
+  imgContainerEl.appendChild(imgEl)
+
+  cardEl.classList.add("card")
+  headlineEl.classList.add("headline")
+  authorContainerEl.classList.add("author")
+  imgContainerEl.classList.add("img-container")
+
+  headlineEl.textContent = article.headline 
+  imgEl.setAttribute("src", article.authorPhoto)
+  nameEl.textContent = article.authorName
+
+  return cardEl
 }
 
 const cardAppender = (selector) => {
@@ -28,6 +51,22 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+
+  fetch(`https://lambda-times-api.herokuapp.com/articles`).then( r => r.json()).then( r => {
+    let topics = r.articles
+    selector = document.querySelector(selector)
+
+    for( let prop in topics) {
+      if(!topics.hasOwnProperty(prop)) {
+        continue
+      }
+      let articles = topics[prop]
+      for (let i = 0; i < articles.length; i++) {
+        let card = Card(articles[i])
+        selector.appendChild(card)
+      }
+    }
+  }).catch( e => console.log(e))
 }
 
 export { Card, cardAppender }
