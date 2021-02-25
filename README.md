@@ -61,7 +61,7 @@ Your must complete all the following steps:
 
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
-- [ ] Use the tabs at the top of the page to filter articles by topic.
+- [x] Use the tabs at the top of the page to filter articles by topic.
 
 ## Submission format
 
